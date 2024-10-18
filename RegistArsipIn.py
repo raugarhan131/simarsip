@@ -5,7 +5,7 @@ from openpyxl import load_workbook
 import xlsxwriter
 import os
 import tkinter as tk
-from tkinter import filedialog, ttk, messagebox
+#from tkinter import filedialog, ttk, messagebox
 import shutil
 import PySimpleGUI as sg
 import pytesseract
