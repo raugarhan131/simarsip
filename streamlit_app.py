@@ -1,6 +1,6 @@
 import streamlit as st
+from main import halaman_utama
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+st.write("Sebelum halaman_utama")
+halaman_utama()
+st.write("Setelah halaman_utama")
