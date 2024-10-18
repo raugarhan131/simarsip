@@ -231,7 +231,7 @@ def lap_inaktif():
 def lap_musnah():
     edit_retensi()
     thn_skrg = datetime.now().year
-    list_thn = list(range(thn_skrg, thn_skrg+5))
+    list_thn = list(range(thn_skrg, thn_skrg+10))
     thn = st.selectbox("Pilih Daftar Arsip Usul Musnah pada Tahun ", list_thn)
 
     data_musnah = get_musnah(thn)     
@@ -256,7 +256,7 @@ def lap_musnah():
 def lap_statis():
     edit_retensi()
     thn_skrg = datetime.now().year
-    list_thn = list(range(thn_skrg, thn_skrg+5))
+    list_thn = list(range(thn_skrg, thn_skrg+10))
     thn = st.selectbox("Pilih Daftar Arsip Usul Serah pada Tahun ", list_thn)
 
     data_permanen = get_permanen(thn)     
