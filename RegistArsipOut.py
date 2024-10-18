@@ -6,8 +6,8 @@ import xlsxwriter
 import os
 #import tkinter as tk
 #from tkinter import filedialog, ttk, messagebox
+#import PySimpleGUI as sg
 import shutil
-import PySimpleGUI as sg
 import pytesseract
 from pdf2image import convert_from_path
 from PIL import Image
