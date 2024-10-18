@@ -8,3 +8,4 @@ xlsxwriter
 PyMuPDF
 Pillow
 streamlit-aggrid
+pdf2image
