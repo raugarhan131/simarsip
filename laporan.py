@@ -243,34 +243,13 @@ def lap_musnah():
     else:
       st.error("Tidak ada data yang ditemukan di database.")
 
-    if st.button("Unduh Daftar Arsip Musnah"):  
-      if data_musnah:
-        df = pd.DataFrame(data_musnah, columns=["Tahun", "NomorSurat", "TglSurat", "Kode", "Hal", "Lampiran", "KetSKKA", "Retensi", "RetAktif", "RetInaktif", "ThnInaktif", "ThnMusnah_Serah", "Lokasi", "Status"])
-            
-        file_name = "laporan_arsip_musnah.xlsx"
-        df.to_excel(file_name, index=False, engine='openpyxl')
-
-        # Memuat workbook Excel yang baru dibuat
-        wb = load_workbook(file_name)
-        ws = wb.active            
-        # Menambahkan hyperlink ke kolom Lokasi
-        for row in range(2, ws.max_row + 1):  # Mulai dari baris 2 (karena baris 1 adalah header)
-            cell = ws[f'M{row}']  # Kolom H adalah kolom Lokasi
-            location_url = cell.value
-            if location_url:
-                cell.hyperlink = location_url  # Set hyperlink
-                cell.font = Font(color="0000FF", underline="single")  # Format sebagai link (biru dan underline)
-
-        # Simpan ulang workbook
-        wb.save(file_name)
-        
-        #print(f"Laporan arsip aktif telah disimpan di {file_name}")
-        if os.path.exists("laporan_arsip_musnah.xlsx"):
-          os.startfile("laporan_arsip_musnah.xlsx")
-        else:
-          st.error("Proses download gagal / data tidak ada....")
-      else:
-        print("Tidak ada arsip aktif yang ditemukan.")
+    excel_data = convert_df_to_excel(df)
+    st.download_button(
+      label="Unduh Daftar Arsip Musnah",
+      data=excel_data,
+      file_name="laporan_arsip_musnah.xlsx",
+      mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
   
     return
 
@@ -289,33 +268,12 @@ def lap_statis():
     else:
       st.error("Tidak ada data yang ditemukan di database.")
 
-    if st.button("Unduh Daftar Arsip Statis"):  
-      if data_permanen:
-        df = pd.DataFrame(data_permanen, columns=["Tahun", "NomorSurat", "TglSurat", "Kode", "Hal", "Lampiran", "KetSKKA", "Retensi", "RetAktif", "RetInaktif", "ThnInaktif", "ThnMusnah_Serah", "Lokasi", "Status"])
-            
-        file_name = "laporan_arsip_statis.xlsx"
-        df.to_excel(file_name, index=False, engine='openpyxl')
-
-        # Memuat workbook Excel yang baru dibuat
-        wb = load_workbook(file_name)
-        ws = wb.active            
-        # Menambahkan hyperlink ke kolom Lokasi
-        for row in range(2, ws.max_row + 1):  # Mulai dari baris 2 (karena baris 1 adalah header)
-            cell = ws[f'M{row}']  # Kolom H adalah kolom Lokasi
-            location_url = cell.value
-            if location_url:
-                cell.hyperlink = location_url  # Set hyperlink
-                cell.font = Font(color="0000FF", underline="single")  # Format sebagai link (biru dan underline)
-
-        # Simpan ulang workbook
-        wb.save(file_name)
-        
-        #print(f"Laporan arsip aktif telah disimpan di {file_name}")
-        if os.path.exists("laporan_arsip_statis.xlsx"):
-          os.startfile("laporan_arsip_statis.xlsx")
-        else:
-          st.error("Proses download gagal / data tidak ada....")
-      else:
-        print("Tidak ada arsip aktif yang ditemukan.")
+    excel_data = convert_df_to_excel(df)
+    st.download_button(
+      label="Unduh Daftar Arsip Statis",
+      data=excel_data,
+      file_name="laporan_arsip_statis.xlsx",
+      mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
     return
 
