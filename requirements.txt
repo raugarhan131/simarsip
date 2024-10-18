@@ -1,1 +1,10 @@
 streamlit
+pandas
+numpy
+PySimpleGUI
+pytesseract
+openpyxl
+xlsxwriter
+PyMuPDF
+Pillow
+streamlit-aggrid
