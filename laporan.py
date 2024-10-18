@@ -218,34 +218,13 @@ def lap_inaktif():
     else:
       st.error("Tidak ada data yang ditemukan di database.")
 
-    if st.button("Unduh Daftar Arsip InAktif"):  
-      if data_inaktif:
-        df = pd.DataFrame(data_inaktif, columns=["Tahun", "NomorSurat", "TglSurat", "Kode", "Hal", "Lampiran", "KetSKKA", "Retensi", "RetAktif", "RetInaktif", "ThnInaktif", "ThnMusnah_Serah", "Lokasi", "Status"])
-            
-        file_name = "laporan_arsip_inaktif.xlsx"
-        df.to_excel(file_name, index=False, engine='openpyxl')
-
-        # Memuat workbook Excel yang baru dibuat
-        wb = load_workbook(file_name)
-        ws = wb.active            
-        # Menambahkan hyperlink ke kolom Lokasi
-        for row in range(2, ws.max_row + 1):  # Mulai dari baris 2 (karena baris 1 adalah header)
-            cell = ws[f'M{row}']  # Kolom H adalah kolom Lokasi
-            location_url = cell.value
-            if location_url:
-                cell.hyperlink = location_url  # Set hyperlink
-                cell.font = Font(color="0000FF", underline="single")  # Format sebagai link (biru dan underline)
-
-        # Simpan ulang workbook
-        wb.save(file_name)
-        
-        #print(f"Laporan arsip aktif telah disimpan di {file_name}")
-        if os.path.exists("laporan_arsip_inaktif.xlsx"):
-          os.startfile("laporan_arsip_inaktif.xlsx")
-        else:
-          st.error("Proses download gagal / data tidak ada....")
-      else:
-        print("Tidak ada arsip aktif yang ditemukan.")
+    excel_data = convert_df_to_excel(df)
+    st.download_button(
+      label="Unduh Daftar Arsip InAktif",
+      data=excel_data,
+      file_name="laporan_arsip_inaktif.xlsx",
+      mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
   
     return
 
