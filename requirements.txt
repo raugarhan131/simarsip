@@ -9,3 +9,4 @@ PyMuPDF
 Pillow
 streamlit-aggrid
 pdf2image
+streamlit_option_menu
