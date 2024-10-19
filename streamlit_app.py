@@ -53,16 +53,16 @@ def show_homepage():
 
 # Halaman login
 def show_login_page():
-    st.title("Login Page")
+    st.title("Halaman Login")
     daftar_unit = get_unit()
 
     # Membuat dropdown dengan NamaUnit dan menyimpan IdUnit yang dipilih
     #unit_names = [f"{unit[0]} ({unit[1]})" for unit in daftar_unit]  # Menampilkan NamaUnit dan IdUnit dalam dropdown
     unit_names = [f"{unit[1]}" for unit in daftar_unit] 
-    selected_unit = st.selectbox("Pilih Unit Kerja", unit_names)
+    selected_unit = st.selectbox("Unit Kerja", unit_names)
 
     # Mendapatkan id dari Unit yang dipilih
-    username = st.text_input("Username")
+    username = st.text_input("Nama Pengguna")
     password = st.text_input("Password", type="password")
     login_button = st.button("Login")
 
