@@ -16,7 +16,7 @@ def halaman_utama():
     selected = option_menu(
       menu_title="Main Menu",
       options=["Home", "Nomor Surat", "Upload Arsip", "Entri Arsip", "Laporan Daftar Arsip", "Klasifikasi dan JRA", "Contact", "Logout"],
-      icons=["house", "book", "folder", "file-earmark-text", "archive", "book", "envelope", "box-arrow-right"],
+      icons=["house", "book", "folder", "file-earmark-text", "archive", "calendar-days", "envelope", "box-arrow-right"],
       menu_icon="cast",
       default_index=0,
       styles={
