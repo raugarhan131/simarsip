@@ -57,8 +57,8 @@ def buat_db():
     CREATE TABLE IF NOT EXISTS KA (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         ParentId INTEGER NOT NULL,
-        Kd TEXT NOT NULL,
-        Fungsi TEXT NOT NULL,
+        Kd TEXT,
+        Fungsi,
         Kode TEXT NOT NULL,
         Nama TEXT NOT NULL,
         Deskripsi TEXT,
@@ -191,17 +191,6 @@ def buat_db():
     )
     ''')
 
-    # Membuat tabel cuti
-    c.execute('''
-    CREATE TABLE IF NOT EXISTS cuti (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        mhs_id INTEGER NOT NULL,
-        semester TEXT NOT NULL,
-        ThnAkademik TEXT NOT NULL,
-        Prodi TEXT NOT NULL,
-        Keperluan TEXT NOT NULL,
-        FOREIGN KEY (mhs_id) REFERENCES mhs(id) ON DELETE CASCADE
-    )
-    ''')
+
     return
 buat_db()
